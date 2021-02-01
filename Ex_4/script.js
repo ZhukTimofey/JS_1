@@ -8,10 +8,14 @@ function login(enter_login) {
     } else if(enter_login==first_login) {
         alert('Добро пожаловать')
     } else  if (enter_login==null) {
-        alert('Вы уверены что не хотите логиниться')
+        let cancel=confirm('Вы уверены что не хотите логиниться')
+        if (!cancel) {
+            let enter_login=prompt('Введите логин');
+            login(enter_login);
+        }
     } else {
         alert('Такого логина не существует, попробуйте ещё раз');
-        const enter_login=prompt('Введите логин');
+        let enter_login=prompt('Введите логин');
         login(enter_login);
     }
     
@@ -23,18 +27,10 @@ const reasons = [
     "Вы не помните свой логин"
 ]
 if (login_bool) {
-    const enter_login=prompt('Введите логин');
-    if (enter_login==null) {
-        let cancel=confirm('Вы уверены что не хотите логиниться')
-        if(!cancel) {
-            const enter_login=prompt('Введите логин');
-            login(enter_login);
-        }
-    } else {
-        login(enter_login);
-    }
+    let enter_login=prompt('Введите логин');
+    login(enter_login);
 } else {
-    let reason=prompt(`Выберете причину:\n${reasons[0]}\n${reasons[1]}\n${reasons[2]}\n`)
+    let reason=prompt(`Выберете причину:\n1: ${reasons[0]}\n2: ${reasons[1]}\n3: ${reasons[2]}\n`)
     let numberOfreason=Number(reason);
     console.log(numberOfreason)
     if (numberOfreason=='') {
@@ -52,4 +48,3 @@ if (login_bool) {
 }
 
 
-//сделать 3 ветку с помощью массивов
